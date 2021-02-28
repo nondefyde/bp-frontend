@@ -1,0 +1,10 @@
+.App {
+    height: 100vh;
+    width: 100%;
+}
+.custom-drop-color {
+   background: darken(#212529, 3%) !important;
+}
+.custom-drop-color-item:hover {
+  color: #212529 !important;
+}
