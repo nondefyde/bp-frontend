@@ -40,7 +40,7 @@ const Login = (props) => {
             /* and other goodies */
           }) => (
             <Form onSubmit={handleSubmit}>
-              <h1 className="h4 mb-4 fw-normal fs-5">Please sign in</h1>
+              <h1 className="h4 mb-4 fw-normal fs-5">Sign in to your account</h1>
               <Label for="username" className="visually-hidden">
                 Username
               </Label>

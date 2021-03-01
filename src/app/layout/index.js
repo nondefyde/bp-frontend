@@ -6,14 +6,22 @@ import {
   UncontrolledDropdown,
 } from "reactstrap";
 import "./styles.scss";
+import authService from "../../services/auth";
+import { connect } from "react-redux";
+import { get, upperFirst } from "lodash";
 
 const Layout = (props) => {
-  const { children } = props;
+  const { children, profile } = props;
   const location = useLocation();
+
+  const isLoggedIn = authService.isLoggedIn();
+
+  const firstname = get(profile, "firstName", "Not assigned");
   const isActive = (pathname) => {
     if (location.pathname === pathname) return true;
     else return false;
   };
+
   return (
     <div className="d-flex h-100 text-white bg-dark">
       <div className="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
@@ -31,39 +39,60 @@ const Layout = (props) => {
               >
                 Home
               </Link>
-              <Link
-                to={"/sign-in"}
-                className={`nav-link ${isActive("/sign-in") ? " active" : ""}`}
-                href="#"
-              >
-                Sign In
-              </Link>
-              <UncontrolledDropdown>
-                <DropdownToggle tag="a" className="nav-link border-0" href="#">
-                  <span className={"d-flex align-items-center mx-3"}>
-                    <i className="bi bi-person mx-2" /> Jeremy
-                  </span>
-                </DropdownToggle>
-                <DropdownMenu className={"custom-drop-color"}>
-                  <DropdownItem>
-                    <Link
-                      to={"/profile-edit"}
-                      className="nav-link border-0 text-white custom-drop-color-item"
-                    >
-                      <span className={"d-flex align-items-center"}>
-                        <i className="bi bi-pen" />
-                        <span className={"mx-3"}>Edit profile</span>
-                      </span>
-                    </Link>
-                  </DropdownItem>
-                  <DropdownItem className="text-white custom-drop-color-item">
-                    <span className={"d-flex align-items-center"}>
-                      <i className="bi bi-arrow-return-left" />
-                      <span className={"mx-3"}>Logout</span>
+              {!isLoggedIn && (
+                <Link
+                  to={"/sign-in"}
+                  className={`nav-link ${
+                    isActive("/sign-in") ? " active" : ""
+                  }`}
+                  href="#"
+                >
+                  Sign In
+                </Link>
+              )}{" "}
+              {isLoggedIn && (
+                <a
+                  className={`nav-link ${
+                    isActive("/sign-in") ? " active" : ""
+                  }`}
+                  href="#"
+                >
+                  Logout
+                </a>
+              )}
+              {isLoggedIn && (
+                <UncontrolledDropdown>
+                  <DropdownToggle
+                    tag="a"
+                    className="nav-link border-0"
+                    href="#"
+                  >
+                    <span className={"d-flex align-items-center mx-3"}>
+                      <i className="bi bi-person mx-2" />{" "}
+                      {upperFirst(firstname)}
                     </span>
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
+                  </DropdownToggle>
+                  <DropdownMenu className={"custom-drop-color"}>
+                    <DropdownItem>
+                      <Link
+                        to={"/profile-edit"}
+                        className="nav-link border-0 text-white custom-drop-color-item"
+                      >
+                        <span className={"d-flex align-items-center"}>
+                          <i className="bi bi-pen" />
+                          <span className={"mx-3"}>Edit profile</span>
+                        </span>
+                      </Link>
+                    </DropdownItem>
+                    <DropdownItem className="text-white custom-drop-color-item">
+                      <span className={"d-flex align-items-center"}>
+                        <i className="bi bi-arrow-return-left" />
+                        <span className={"mx-3"}>Logout</span>
+                      </span>
+                    </DropdownItem>
+                  </DropdownMenu>
+                </UncontrolledDropdown>
+              )}
             </nav>
           </div>
         </header>
@@ -75,4 +104,9 @@ const Layout = (props) => {
   );
 };
 
-export default Layout;
+const stateToProps = (state) => ({
+  profile: state.app?.user?.data?.user || {},
+  user: state.app?.user?.data || {},
+});
+const dispatchToProps = {};
+export default connect(stateToProps, dispatchToProps)(Layout);
