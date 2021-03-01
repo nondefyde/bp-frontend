@@ -25,7 +25,7 @@ const Landing = () => {
       >
         <Button
           size={"lg"}
-          className="btn btn-lg btn-secondary border-white bg-white ml-4"
+          className="btn btn-lg btn-secondary fw-bold border-white bg-white ml-4"
         >
           Get started
         </Button>
@@ -34,7 +34,7 @@ const Landing = () => {
             <Button
               size={"lg"}
               outline
-              className="btn btn-secondary border-white bg-transparent text-white"
+              className="btn btn-secondary fw-bold border-white bg-transparent text-white"
               onClick={onSignIn}
             >
               Sign in
