@@ -71,7 +71,7 @@ const apiRequest = ({ dispatch }) => (next) => (action) => {
         const toastMessage = successMessage || (meta && meta.message);
         if (!noSuccessToast && toastMessage) {
           toast.dismiss();
-          toast.info(toastMessage);
+          toast.success(toastMessage);
         }
       })
       .catch((e) => {

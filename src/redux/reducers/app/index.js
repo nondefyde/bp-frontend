@@ -1,4 +1,9 @@
-import { LOGIN, LOGOUT, UPDATE_SESSION_TOKEN } from "../../actions";
+import {
+  LOGIN,
+  LOGOUT,
+  UPDATE_SESSION_TOKEN,
+  UPDATE_PROFILE,
+} from "../../actions";
 
 const defaultState = {
   user: {
@@ -16,7 +21,13 @@ const appReducer = (state = defaultState, action) => {
           data: action.payload,
         },
       });
-
+    case UPDATE_PROFILE.SUCCESS:
+      return Object.assign({}, state, {
+        user: {
+          ...state.user,
+          data: Object.assign({}, state.user.data, { user: action.payload }),
+        },
+      });
     case UPDATE_SESSION_TOKEN:
       return Object.assign({}, state, {
         user: { ...state.user, session: action.payload },
