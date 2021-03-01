@@ -4,6 +4,7 @@ import { useNavigate } from "@reach/router";
 import { connect } from "react-redux";
 import authService from "../../services/auth";
 
+
 const Landing = () => {
   const navigate = useNavigate();
   const isLoggedIn = authService.isLoggedIn();
@@ -46,5 +47,7 @@ const Landing = () => {
 };
 
 const stateToProps = (state) => ({});
-const dispatchToProps = {};
+const dispatchToProps = {
+
+};
 export default connect(stateToProps, dispatchToProps)(Landing);

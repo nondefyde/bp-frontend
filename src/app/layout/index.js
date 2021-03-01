@@ -9,18 +9,22 @@ import "./styles.scss";
 import authService from "../../services/auth";
 import { connect } from "react-redux";
 import { get, upperFirst } from "lodash";
+import { logout } from "../../redux/actions";
 
 const Layout = (props) => {
-  const { children, profile } = props;
+  const { children, profile, logout } = props;
   const location = useLocation();
 
   const isLoggedIn = authService.isLoggedIn();
 
   const firstname = get(profile, "firstName", "Not assigned");
+
   const isActive = (pathname) => {
     if (location.pathname === pathname) return true;
     else return false;
   };
+
+  const onLogout = () => logout();
 
   return (
     <div className="d-flex h-100 text-white bg-dark">
@@ -56,6 +60,7 @@ const Layout = (props) => {
                     isActive("/sign-in") ? " active" : ""
                   }`}
                   href="#"
+                  onClick={onLogout}
                 >
                   Logout
                 </a>
@@ -84,7 +89,10 @@ const Layout = (props) => {
                         </span>
                       </Link>
                     </DropdownItem>
-                    <DropdownItem className="text-white custom-drop-color-item">
+                    <DropdownItem
+                      className="text-white custom-drop-color-item"
+                      onClick={onLogout}
+                    >
                       <span className={"d-flex align-items-center"}>
                         <i className="bi bi-arrow-return-left" />
                         <span className={"mx-3"}>Logout</span>
@@ -108,5 +116,5 @@ const stateToProps = (state) => ({
   profile: state.app?.user?.data?.user || {},
   user: state.app?.user?.data || {},
 });
-const dispatchToProps = {};
+const dispatchToProps = { logout };
 export default connect(stateToProps, dispatchToProps)(Layout);

@@ -1,4 +1,5 @@
 import { Label, Form, Input, Button, FormGroup } from "reactstrap";
+import {connect} from "react-redux";
 
 const EditProfile = () => {
   return (
@@ -44,4 +45,9 @@ const EditProfile = () => {
   );
 };
 
-export default EditProfile;
+const stateToProps = (state) => ({});
+const dispatchToProps = {
+
+};
+export default connect(stateToProps, dispatchToProps)(EditProfile);
+
