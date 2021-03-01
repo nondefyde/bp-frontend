@@ -9,13 +9,13 @@ import Layout from "./layout";
 function App() {
   return (
     <div className={"App"}>
-      <Layout>
-        <Router>
+      <Router style={{height: '100%'}}>
+        <Layout path="/">
           <Landing path="/" />
           <Login path="/sign-in" />
           <EditProfile path="/profile-edit" />
-        </Router>
-      </Layout>
+        </Layout>
+      </Router>
     </div>
   );
 }

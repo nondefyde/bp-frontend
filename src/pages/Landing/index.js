@@ -10,7 +10,7 @@ const Landing = () => {
   };
 
   return (
-    <main className="px-3">
+    <main className="px-3 text-center">
       <h1>An expert search engine optimization</h1>
       <p className="lead my-3">
         Start working with Landy that can provide everything you need to

@@ -1,4 +1,4 @@
-import { Link } from "@reach/router";
+import { Link, useLocation } from "@reach/router";
 import {
   DropdownItem,
   DropdownMenu,
@@ -9,8 +9,13 @@ import "./styles.scss";
 
 const Layout = (props) => {
   const { children } = props;
+  const location = useLocation();
+  const isActive = (pathname) => {
+    if (location.pathname === pathname) return true;
+    else return false;
+  };
   return (
-    <div className="d-flex h-100 text-center text-white bg-dark">
+    <div className="d-flex h-100 text-white bg-dark">
       <div className="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
         <header className="mb-auto">
           <div>
@@ -20,16 +25,17 @@ const Layout = (props) => {
             <nav className="nav nav-masthead justify-content-center float-md-end">
               <Link
                 to={"/"}
-                className="nav-link active"
+                className={`nav-link ${isActive("/") ? " active" : ""}`}
                 aria-current="home"
                 href="#"
               >
                 Home
               </Link>
-              {/*<Link to={"/features"} className="nav-link" href="#">*/}
-              {/*  Features*/}
-              {/*</Link>*/}
-              <Link to={"/sign-in"} className="nav-link" href="#">
+              <Link
+                to={"/sign-in"}
+                className={`nav-link ${isActive("/sign-in") ? " active" : ""}`}
+                href="#"
+              >
                 Sign In
               </Link>
               <UncontrolledDropdown>

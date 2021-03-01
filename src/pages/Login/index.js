@@ -3,7 +3,7 @@ import "./styles.scss";
 
 const Login = () => {
   return (
-    <div className={"Sign-In"}>
+    <div className={"Sign-In text-center"}>
       <main className="form-signin">
         <Form>
           <h1 className="h4 mb-4 fw-normal fs-5">Please sign in</h1>
