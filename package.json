@@ -20,6 +20,7 @@
     "react-scripts": "4.0.3",
     "react-spinners": "^0.10.6",
     "react-toastify": "^7.0.3",
+    "react-use-form-state": "^0.13.2",
     "reactstrap": "^8.9.0",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
