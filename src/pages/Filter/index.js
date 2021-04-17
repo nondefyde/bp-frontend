@@ -14,26 +14,6 @@ const Filter = () => {
     });
     
     const [subFormState, setSubFormState] = useFormState({
-        // h0: 'Nigeria',
-        // a0: 'Brazil',
-        // h1: 'Togo',
-        // a1: 'Ghana',
-        // h2: 'Argentina',
-        // a2: 'Germany',
-        // h3: 'hjolalsd',
-        // a3: 'frgsfsd',
-        // h4: 'sdsdfdsf',
-        // a4: 'sdfsdfsd',
-        // h5: 'svdvsdvsd',
-        // a5: 'vsdvdsv',
-        // h6: 'dvsdvsd',
-        // a6: 'sdvsdv',
-        // h7: 'Argevsdvdsntina',
-        // a7: 'Germany',
-        // h8: 'Argevsdvdsntina',
-        // a8: 'Germany',
-        // h9: 'Argevsdvdsntina',
-        // a9: 'Germany'
     });
     
     
