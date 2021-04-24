@@ -8,9 +8,9 @@ const Filter = () => {
     const [result, setResult] = useState([]);
     const [subResult, setSubResult] = useState([]);
     const [formState, {text}] = useFormState({
-        rows: 50,
-        subs: 10,
-        subResult: 5
+        rows: 0,
+        subs: 0,
+        subResult: 0
     });
     
     const [subFormState, setSubFormState] = useFormState({
@@ -58,14 +58,15 @@ const Filter = () => {
         e.preventDefault();
         console.log('values :::', values);
         const {rows, subs, subResult} = values;
-        formState.setField('rows', rows);
-        formState.setField('subs', subs);
-        formState.setField('subResult', subResult);
+        formState.setField('rows', Number(rows));
+        formState.setField('subs', Number(subs));
+        formState.setField('subResult', Number(subResult));
         generateSub();
         
     };
     
     const generateSub = () => {
+        setResult([]);
         const sentValue = subFormState.values;
         const all = [];
         for (let i = 0; i < values.rows; i++) {
@@ -95,8 +96,8 @@ const Filter = () => {
                 <input {...text('subResult')} required className="me-lg-2"/>
                 <button>Generate</button>
             </form>
-            {values.rows && <h4 className="mt-lg-5">Data</h4>}
-            {values.rows && <Row>
+            {values.rows > 0 && <h4 className="mt-lg-5">Data</h4>}
+            {values.rows > 0 && <Row>
                 <form
                     onSubmit={handleSubSubmit}>
                     {values.rows && Array.from(Array(values.rows).keys()).map((row, index) => (
@@ -109,8 +110,7 @@ const Filter = () => {
                     ))}
                     <button className="mt-lg-5 ">Generate</button>
                 </form>
-            </Row>
-            }
+            </Row>}
             
             {result.length > 0 && <h4 className="mt-lg-5">Generated</h4>}
             <Row>
