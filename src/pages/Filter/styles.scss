@@ -1,0 +1,15 @@
+.Algorithm {
+    padding: 20px;
+    background: var(--background-secondary);
+}
+.generated-section {
+    padding-top: 40px;
+    .generated-section-align-center{
+        text-align: center;
+
+    }
+}
+.flex-center {
+    display: flex;
+    justify-content: center;
+}
