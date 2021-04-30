@@ -1,22 +1,13 @@
-const http = require('http');
+const express = require('express');
 const path = require('path');
-const handler = require('serve-handler');
+const app = express();
 
-const server = http.createServer((request, response) => {
-  // You pass two more arguments for config and middleware
-  // More details here: https://github.com/zeit/serve-handler#options
-  // eslint-disable-next-line no-undef
-  console.log('Path: ', path.join(__dirname, 'build'));
+app.use(express.static(path.join(__dirname, 'build')));
 
-  return handler(request, response, {
-    // eslint-disable-next-line no-undef
-    public: path.join(__dirname, 'build'),
-    cleanUrls: true,
-    rewrites: [{ source: '/**', destination: '/index.html' }],
-    directoryListing: false,
-  });
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
-const port = process.env.PORT || 7000;
-server.listen(port, () => {
-  console.log(`Running at http://localhost:${port}`);
-});
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT);
