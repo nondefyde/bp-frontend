@@ -16,7 +16,7 @@ const server = http.createServer((request, response) => {
     directoryListing: false
   })
 });
-const port = process.env.PORT || 3000;
-server.listen(process.env.PORT || 3000 , () => {
+const port = process.env.PORT;
+server.listen(process.env.PORT , () => {
   console.log('Running at http://localhost:'+ port);
 });
