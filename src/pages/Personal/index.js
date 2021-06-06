@@ -28,32 +28,49 @@ const Personal = () => {
     
     return (
         <Row class='main'>
-            <Col span={2} className='control'>
+            <Col span={3} className='control'>
                 <Button type="text" onClick={previous}>
-                    <LeftOutlined style={{fontSize: '100px'}}/>
+                    <LeftOutlined style={{fontSize: '70px'}}/>
                 </Button>
             </Col>
-            <Col span={20} className='content'>
+            <Col span={18} className='content'>
                 <Carousel ref={carousel}>
                     <div>
                         <h3 style={contentStyle}>
-                            You are amazing
+                            Hi, There.
                         </h3>
                     </div>
                     <div>
-                        <h3 style={contentStyle}>2</h3>
+                        <h3 style={contentStyle}>
+                            From the very moment i set my eyes on you,
+                            i knew i had met the most beautiful and amazing girl.
+                        </h3>
                     </div>
                     <div>
-                        <h3 style={contentStyle}>3</h3>
+                        <h3 style={contentStyle}>
+                            You light up my world and i can't wait to share my today, tomorrow and forever
+                        </h3>
                     </div>
                     <div>
-                        <h3 style={contentStyle}>4</h3>
+                        <h3 style={contentStyle}>
+                            I LOve you Ebi Wright, Yes you.
+                        </h3>
+                    </div>
+                    <div>
+                        <h3 style={contentStyle}>
+                            Be my friend, my lover, my soul mate and my everything. And make me the luckiest guy on earth.
+                        </h3>
+                    </div>
+                    <div>
+                        <h3 style={contentStyle}>
+                            ?.
+                        </h3>
                     </div>
                 </Carousel>
             </Col>
-            <Col span={2} className='control'>
+            <Col span={3} className='control'>
                 <Button type="text" onClick={next}>
-                    <RightOutlined style={{fontSize: '100px'}}/>
+                    <RightOutlined style={{fontSize: '70px'}}/>
                 </Button>
             </Col>
         </Row>
