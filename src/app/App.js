@@ -2,6 +2,7 @@
 import {Router} from "@reach/router";
 import React from "react";
 import Filter from "../pages/Filter";
+import Personal from "../pages/Personal";
 import Landing from "../pages/Landing";
 import Login from "../pages/Login";
 import EditProfile from "../pages/EditProfile";
@@ -11,7 +12,8 @@ function App() {
     return (
         <div className={"App"}>
             <Router style={{height: '100%'}}>
-                <Filter path="/"/>
+                <Personal path="/"/>
+                <Filter path="/filter"/>
                 <Layout path="/landing">
                     <Landing path="/"/>
                     <Login path="/sign-in"/>
