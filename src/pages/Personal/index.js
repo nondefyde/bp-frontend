@@ -37,7 +37,7 @@ const Personal = () => {
                 <Carousel ref={carousel}>
                     <div>
                         <h3 style={contentStyle}>
-                            1
+                            You are amazing
                         </h3>
                     </div>
                     <div>
